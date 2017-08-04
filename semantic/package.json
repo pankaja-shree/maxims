@@ -1,0 +1,22 @@
+{
+  "name": "semantic-compatibility",
+  "version": "1.0.0",
+  "description": "noun-0verb semantic compatibility ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pankaja-shree/semantic-check.git"
+  },
+  "author": "pankaja-shree, srvvp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pankaja-shree/semantic-check/issues"
+  },
+  "homepage": "https://github.com/pankaja-shree/semantic-check#readme",
+  "dependencies": {
+    "mysql": "^2.14.1"
+  }
+}
