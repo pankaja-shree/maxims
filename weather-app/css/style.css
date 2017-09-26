@@ -1,0 +1,76 @@
+body{
+	font-family: 'Lato', sans-serif;
+  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+  height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+      color: white;
+  
+}
+
+.content{
+  margin:5%;
+ padding:5%;
+}
+
+.header{
+  text-align: center;
+  margin-bottom:10%;
+  line-height: 0.8em;
+ }
+
+.weather-info{
+  display: -webkit-flex;
+    display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+    align-items: center;
+  text-align: center;
+}
+
+footer{
+ position:fixed;
+  padding:1%;
+ left:0;
+  bottom:0;
+}
+img{
+  display: inline-block;
+  margin: -1%;
+}
+
+#weather-image{
+  margin: -5%;
+  padding-left: 8%;
+
+}
+
+#weather{
+  text-transform: capitalize;
+  padding-left: 2%;
+}
+.location{
+  text-align: left;
+  padding-right: 2%;
+}
+
+.weather-params{  
+display: table-cell;
+  text-align: right;
+}
+
+#city, #lat, #lon, .temp{
+  line-height: 2.5em;
+}
+
+.temp, #speed{
+  line-height: 2.2em;
+}
+
+.temp:hover{
+  font-weight: bold;
+  cursor: pointer;
+}
+
