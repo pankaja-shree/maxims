@@ -1,0 +1,22 @@
+{
+  "name": "maxims",
+  "version": "1.0.0",
+  "description": "sanskrit maxims of ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pankaja-shree/maxims.git"
+  },
+  "author": "pankajashree",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pankaja-shree/maxims/issues"
+  },
+  "homepage": "https://github.com/pankaja-shree/maxims#readme",
+  "dependencies": {
+    "express": "^4.15.5"
+  }
+}
