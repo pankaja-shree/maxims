@@ -14,6 +14,7 @@ app.config['MYSQL_DATABASE_DB'] = 'sanskrit'
 app.config['MYSQL_DATABASE_HOST'] = '192.168.1.80'
 mysql.init_app(app)
 
+# Create user API
 class CreateUser(Resource):
     def post(self):
         try:
@@ -88,6 +89,34 @@ class AddItem(Resource):
 
             conn.commit()
             return {'StatusCode':'200','Message': 'Success'}
+
+        except Exception as e:
+            return {'error': str(e)}
+
+#Get all items API
+class GetAllItems(Resource):
+    def post(self):
+        try: 
+            # Parse the arguments
+            parser = reqparse.RequestParser()
+            parser.add_argument('id', type=str)
+            args = parser.parse_args()
+
+            _userId = args['id']
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('sp_GetAllItems',(_userId,))
+            data = cursor.fetchall()
+            items_list=[];
+            for item in data:
+                i = {
+                    'Id':item[0],
+                    'Item':item[1]
+                }
+                items_list.append(i)
+
+            return {'StatusCode':'200', 'Items: ':items_list}
 
         except Exception as e:
             return {'error': str(e)}
