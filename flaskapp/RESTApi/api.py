@@ -15,6 +15,7 @@ app.config['MYSQL_DATABASE_HOST'] = '192.168.1.80'
 mysql.init_app(app)
 
 # Create user API
+#api route - localhost:5000/CreateUser?email=email&password=password
 class CreateUser(Resource):
     def post(self):
         try:
