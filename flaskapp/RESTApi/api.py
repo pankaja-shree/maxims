@@ -41,5 +41,32 @@ class CreateUser(Resource):
 
 api.add_resource(CreateUser, '/CreateUser')
 
+# Authenticate use API
+class AuthenticateUser(Resource):
+    def post(self):
+        try:
+            # Parse the arguments
+            parser = reqparse.RequestParser()
+            parser.add_argument('email', type=str, help='Email address for Authentication')
+            parser.add_argument('password', type=str, help='Password for Authentication')
+            args = parser.parse_args()
+
+            _userEmail = args['email']
+            _userPassword = args['password']
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('sp_AuthenticateUser',(_userEmail,))
+            data = cursor.fetchall()
+            if(len(data)>0):
+                if(str(data[0][2])==_userPassword):
+                    return {'status':200,'UserId':str(data[0][0])}
+                else:
+                    return {'status':100,'message':'Authentication failure'}
+
+        except Exception as e:
+            return {'error': str(e)}
+
+api.add_resource(AuthenticateUser, '/AuthenticateUser')
+
 if __name__ == '__main__':
     app.run(debug=True)
