@@ -93,6 +93,8 @@ class AddItem(Resource):
         except Exception as e:
             return {'error': str(e)}
 
+api.add_resource(AddItem, '/AddItem')
+
 #Get all items API
 class GetAllItems(Resource):
     def post(self):
@@ -121,5 +123,6 @@ class GetAllItems(Resource):
         except Exception as e:
             return {'error': str(e)}
 
+api.add_resource(GetAllItems, '/GetAllItems')
 if __name__ == '__main__':
     app.run(debug=True)
