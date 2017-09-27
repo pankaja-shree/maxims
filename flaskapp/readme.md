@@ -4,3 +4,8 @@
 
 ### Helpful series - 
 * http://codehandbook.org/flask-restful-api-using-python-mysql/
+
+### API usages -
+
+* CreateUser api - 
+`http://127.0.0.1:5000/CreateUser?email=newtwo@gmail.com&password=new123`
