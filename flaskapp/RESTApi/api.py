@@ -68,5 +68,29 @@ class AuthenticateUser(Resource):
 
 api.add_resource(AuthenticateUser, '/AuthenticateUser')
 
+#AddItem API
+class AddItem(Resource):
+    def post(self):
+        try: 
+            # Parse the arguments
+            parser = reqparse.RequestParser()
+            parser.add_argument('id', type=str)
+            parser.add_argument('item', type=str)
+            args = parser.parse_args()
+
+            _userId = args['id']
+            _item = args['item']
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('sp_AddItems',(_userId,_item))
+            data = cursor.fetchall()
+
+            conn.commit()
+            return {'StatusCode':'200','Message': 'Success'}
+
+        except Exception as e:
+            return {'error': str(e)}
+
 if __name__ == '__main__':
     app.run(debug=True)
