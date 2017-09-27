@@ -14,7 +14,7 @@ def Authenticate():
     username = request.args.get('UserName')
     password = request.args.get('Password')
     cursor = mysql.connect().cursor()
-    cursor.execute("SELECT * from User where Username='" + username + "' and Password='" + password + "'")
+    cursor.execute("SELECT * from empmaster where Username='" + username + "' and Password='" + password + "'")
     data = cursor.fetchone()
     if data is None:
      return "Username or Password is wrong"
