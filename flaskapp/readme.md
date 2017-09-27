@@ -9,3 +9,10 @@
 
 * CreateUser api - 
 `http://127.0.0.1:5000/CreateUser?email=newtwo@gmail.com&password=new123`
+
+#### Steps for creating an Rest API service:
+
+* Create table
+* Create a stored procedure
+* create resource class in python
+* add api route 
