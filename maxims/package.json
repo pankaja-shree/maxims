@@ -18,6 +18,9 @@
   "homepage": "https://github.com/pankaja-shree/maxims#readme",
   "dependencies": {
     "express": "^4.15.5",
-    "mysql": "^2.14.1"
+    "mysql": "^2.14.1",
+    "body-parser": "1.18.2",
+    "consolidate": "^0.14.5",
+    "nunjucks": "^3.0.1"
   }
 }
