@@ -125,5 +125,14 @@ class GetAllItems(Resource):
             return {'error': str(e)}
 
 api.add_resource(GetAllItems, '/GetAllItems')
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+@app.route("/maxims")
+def maxims():
+    return "Maxims page"
+
 if __name__ == '__main__':
     app.run(debug=True)
