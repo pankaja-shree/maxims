@@ -1,14 +1,13 @@
 <!doctype HTML>
 <html>
+    <meta charset="UTF-8">    
   <head><title>Post a maxim</title></head>
   <body>
-     <form action="/favorite_fruit" method="POST">
-        <p>What is your favorite fruit?</p>
-        {% for fruit in fruits %}
-          <p>
-            <input type="radio" name="fruit" value="{{fruit}}"/>{{fruit}}
-          </p>
-        {% endfor %}
+    <h1>Add maxim to the database</h1>
+     <form action="/addmaxim" method="POST">
+        <input type="text" name="maxim" id="maxim" value="" placeholder="Maxim in Sanskrit (Unicode)">
+        <input type="text" name="meaning" id="meaning" value="" placeholder="Meaning in English">
+        <input type="text" name="context" id="context" value="" placeholder="Context in which it is used">        
         <input type="submit" value="Submit"/>
      </form>
   </body>
