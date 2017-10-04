@@ -40,17 +40,17 @@ app.get('/maxims', (req, res) => {
     //assert.equal(null, err); 
     //if(err) res.render('error_template', { error: err })    
     console.log("Connected to db!");
-  con.query('SELECT * FROM maxims', (err, rows, fields) => {
+    con.query('SELECT * FROM maxims', (err, rows, fields) => {
       //assert.equal(null, err); 
     //if(err) res.render('error_template', { error: err })    
-    if(rows.length != 0){
+      if(rows.length != 0){
         let maxims = JSON.parse(JSON.stringify(rows));
         res.render('maxims', { 'maxims': maxims } );
-  }else{
-      //data["Data"] = 'No data Found..';
-      //res.json(data);
-      res.status(500).render('error_template', { error: err });
-  }
+    }else{
+        //data["Data"] = 'No data Found..';
+        //res.json(data);
+        res.status(500).render('error_template', { error: err });
+    }
      });
   });
 });
