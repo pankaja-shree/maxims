@@ -36,22 +36,24 @@ app.get('/', (req, res) => {
 
 //print all maxims
 app.get('/maxims', (req, res) => {
-  /*var data = {
-    "Data":""
-};*/
+  con.connect( (err) => {
+    //assert.equal(null, err); 
+    //if(err) res.render('error_template', { error: err })    
+    console.log("Connected to db!");
   con.query('SELECT * FROM maxims', (err, rows, fields) => {
-    if (err) assert.equal(null, err);
+      //assert.equal(null, err); 
+    //if(err) res.render('error_template', { error: err })    
     if(rows.length != 0){
-      //data["Data"] = rows;
-      //let maxims = rows;
-      res.render('maxims', { 'maxims': JSON.parse(JSON.stringify(rows)) } );
+        let maxims = JSON.parse(JSON.stringify(rows));
+        res.render('maxims', { 'maxims': maxims } );
   }else{
       //data["Data"] = 'No data Found..';
       //res.json(data);
       res.status(500).render('error_template', { error: err });
   }
-   })
-})
+     });
+  });
+});
 
 //post a maxim
 app.get('/addmaxim', (req, res, next) => {
