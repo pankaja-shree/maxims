@@ -1,5 +1,6 @@
 var express = require('express'),
-bodyParser = require("body-parser")//,
+    engines = require('consolidate'),
+    bodyParser = require("body-parser")//,
     //db = require('./db.js')
 
 var mysql = require('mysql');
@@ -18,7 +19,7 @@ function errorHandler(err, req, res, next) {
   console.error(err.stack);
   res.status(500).render('error_template', { error: err });
 }
-
+//create mysql db connection
 var con = mysql.createConnection({
   host: "192.168.1.80",
   user: "root",
@@ -35,10 +36,12 @@ app.get('/', (req, res) => {
     if (err) console.log(err)
     if(rows.length != 0){
       data["Data"] = rows;
-      res.json(data);
+      let maxims = rows;
+      res.render('maxims', maxims);
   }else{
-      data["Data"] = 'No data Found..';
-      res.json(data);
+      //data["Data"] = 'No data Found..';
+      //res.json(data);
+      res.status(500).render('error_template', { error: err });
   }
    })
 })
