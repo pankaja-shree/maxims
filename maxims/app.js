@@ -44,6 +44,9 @@ app.get('/', (req, res) => {
 })
 
 //post a maxim
+app.get('/addmaxim', (req, res, next) => {
+  res.render('maximpost');
+})
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
