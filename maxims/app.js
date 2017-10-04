@@ -34,7 +34,7 @@ app.get('/maxims', (req, res) => {
     "Data":""
 };
   con.query('SELECT * FROM maxims', (err, rows, fields) => {
-    if (err) console.log(err)
+    if (err) assert.equal(null, err);
     if(rows.length != 0){
       data["Data"] = rows;
       let maxims = rows;
