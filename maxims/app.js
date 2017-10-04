@@ -6,7 +6,10 @@ var mysql = require('mysql');
 var http = require('http').Server(app);
 
 var app = express()
-app.use(bodyParser.urlencoded({ extended: false })); 
+app.engine('html', engines.nunjucks);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/views');
+app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
 
 var con = mysql.createConnection({
