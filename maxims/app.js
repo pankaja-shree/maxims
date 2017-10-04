@@ -55,8 +55,7 @@ app.get('/maxims', (req, res) => {
   });
 });
 
-//post a maxim
-app.get('/addmaxim', (req, res, next) => {
+app.get('/addmaxim', (req,res) => {
   res.render('maximpost');
 })
 
