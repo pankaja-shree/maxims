@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
     if(rows.length != 0){
       data["Data"] = rows;
       let maxims = rows;
-      res.render('maxims', maxims);
+      res.render('maxims', {'maxims': data["Data"]});
   }else{
       //data["Data"] = 'No data Found..';
       //res.json(data);
