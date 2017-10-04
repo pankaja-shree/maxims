@@ -11,6 +11,7 @@ var app = express()
 app.engine('html', engines.nunjucks);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
+app.use('/static', express.static(__dirname + '/static'));
 
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
