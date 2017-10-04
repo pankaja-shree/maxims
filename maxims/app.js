@@ -58,6 +58,29 @@ app.get('/maxims', (req, res) => {
 app.get('/addmaxim', (req,res) => {
   res.render('maximpost');
 })
+//post a maxim
+app.post('/addmaxim', (req, res, next) => {
+  let maxim = req.body.maxim;
+  let meaning = req.body.meaning;
+  let context = req.body.context;
+
+  if(maxim == '' || meaning == '' || context == ''){
+      next('Please fill all the fields');
+  }
+
+  con.connect( (err) => {
+    //if(err) res.render('error_template', { error: err })
+    console.log('Connected for insert');
+    con.query("INSERT INTO maxims (maxim, meaning, context) VALUES ('" + maxim + "', '" + meaning + "', '" + context + "')", (err, result) => {
+    //if(err) res.render('error_template', { error: err })
+    //assert.equal(null, err);
+      console.log("Number of records inserted: " + result.affectedRows);
+      res.send('New maxim added to Database with id = '+result.insertId);
+    });
+  });
+});
+
+//app.use(errorHandler);
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
