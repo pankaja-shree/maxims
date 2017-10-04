@@ -1,7 +1,7 @@
 var express = require('express'),
     engines = require('consolidate'),
-    bodyParser = require("body-parser"),
-    assert = require('assert');//,
+    bodyParser = require("body-parser")//,
+   // assert = require('assert');,
     //db = require('./db.js')
 
 var mysql = require('mysql');
