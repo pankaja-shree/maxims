@@ -29,8 +29,8 @@ var con = mysql.createConnection({
 });
 
 //print all maxims
-app.get('/', (req, res) => {
-  var data = {
+app.get('/maxims', (req, res) => {
+  /*var data = {
     "Data":""
 };
   con.query('SELECT * FROM maxims', (err, rows, fields) => {
