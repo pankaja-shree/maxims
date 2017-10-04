@@ -29,6 +29,11 @@ var con = mysql.createConnection({
   database: "sanskrit"
 });
 
+//home page
+app.get('/', (req, res) => {
+    res.send('Welcome')
+})
+
 //print all maxims
 app.get('/maxims', (req, res) => {
   /*var data = {
