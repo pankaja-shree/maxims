@@ -12,6 +12,13 @@ app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
 
+// Handler for internal server errors
+function errorHandler(err, req, res, next) {
+  console.error(err.message);
+  console.error(err.stack);
+  res.status(500).render('error_template', { error: err });
+}
+
 var con = mysql.createConnection({
   host: "192.168.1.80",
   user: "root",
