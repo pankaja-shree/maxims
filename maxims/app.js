@@ -11,6 +11,7 @@ var app = express()
 app.engine('html', engines.nunjucks);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
+
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
 
@@ -32,13 +33,13 @@ var con = mysql.createConnection({
 app.get('/maxims', (req, res) => {
   /*var data = {
     "Data":""
-};
+};*/
   con.query('SELECT * FROM maxims', (err, rows, fields) => {
     if (err) assert.equal(null, err);
     if(rows.length != 0){
-      data["Data"] = rows;
-      let maxims = rows;
-      res.render('maxims', {'maxims': data["Data"]});
+      //data["Data"] = rows;
+      //let maxims = rows;
+      res.render('maxims', { 'maxims': JSON.parse(JSON.stringify(rows)) } );
   }else{
       //data["Data"] = 'No data Found..';
       //res.json(data);
