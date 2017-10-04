@@ -5,8 +5,9 @@
      <h1>Sanskrit Maxims</h1>
         {% for maxim in maxims %}
           <p>
-            {{maxim.meaning}}
+            {{ maxim.maxim }}
           </p>
+          <p>{{ maxim.meaning }}</p>
         {% endfor %}
   </body>
 </html>
