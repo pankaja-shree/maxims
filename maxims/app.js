@@ -32,7 +32,7 @@ var con = mysql.createConnection({
 
 //home page
 app.get('/', (req, res) => {
-    res.send('Welcome')
+    res.render('home')
 })
 
 //print all maxims
