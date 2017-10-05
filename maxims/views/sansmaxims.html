@@ -22,10 +22,10 @@
         <tbody>
             {% for maxim in maxims %}
             <tr>
-                <th onclick="toggleShow()" scope="row">{{ maxim.id }}</th>
-                <td class ="mb-1" onclick="toggleShow()">
+                <th onclick="toggleShow({{maxim.id}})" scope="row">{{ maxim.id }}</th>
+                <td class ="mb-1" onclick="toggleShow({{maxim.id}})">
                     {{ maxim.maxim }}
-                    <div class = "hidden">
+                    <div id = "{{maxim.id}}" class = "hidden">
                       <p><b>Meaning: </b>{{ maxim.meaning }}</p>
                       <p><b>Context: </b>{{ maxim.context }}</p>
                       </div> 
@@ -41,10 +41,14 @@
         <script>
           var htmlCollection = document.getElementsByClassName('hidden');
           var arr = Array.from(htmlCollection);
-        function toggleShow(){
+        function toggleShow(id){
+          let ele = document.getElementById(id);
+          ele.classList.toggle('hidden');
+          /*
             arr.forEach((ele) => {
               ele.classList.toggle('hidden')
             });
+            */
           }
         </script>
   </body>
