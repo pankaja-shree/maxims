@@ -97,7 +97,8 @@ app.post('/addmaxim', (req, res, next) => {
     //if(err) res.render('error_template', { error: err })
     //assert.equal(null, err);
       console.log("Number of records inserted: " + result.affectedRows);
-      res.send('New maxim added to Database with id = '+result.insertId);
+      //res.send('New maxim added to Database with id = '+result.insertId);
+      res.render('thankpage')
     });
   });
 });
