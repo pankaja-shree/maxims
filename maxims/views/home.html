@@ -5,17 +5,22 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container">
+    <div class="container text-center">
      <h1 class = "jumbotron text-center">Sanskrit Maxims, Meanings and Context in which they are used</h1>
 
-     
-        <div class="form-group">
+     <div class="form-group">
+        <a href = '/addmaxim' class = "btn btn-info"><b>Add Maxim to the Database</b></a>
+      </div>
+
+     <div class="form-group">
           <a href = '/sansmaxims' class = "btn btn-info"><b>Display Sanskrit Maxims only</b></a>
         </div>
-        <div class="form-group">
+
+    <div class="form-group">
                 <a href = '/maxims' class = "btn btn-info"><b>Display all Sanskrit Maxims with explanation</b></a>
               </div>
-              <form class="form-inline">
+              
+      <form class="form-inline">
         <div class="form-group mx-sm-3">
           <input type="text" class="form-control" id="searchtext" placeholder="Search Maxim">
         </div>
