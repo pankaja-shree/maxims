@@ -56,6 +56,27 @@ app.get('/maxims', (req, res) => {
   });
 });
 
+//print all maxims in sanskrit only
+app.get('/sansmaxims', (req, res) => {
+  con.connect( (err) => {
+    //assert.equal(null, err); 
+    //if(err) res.render('error_template', { error: err })    
+    console.log("Connected to db!");
+    con.query('SELECT * FROM maxims', (err, rows, fields) => {
+      //assert.equal(null, err); 
+    //if(err) res.render('error_template', { error: err })    
+      if(rows.length != 0){
+        let maxims = JSON.parse(JSON.stringify(rows));
+        res.render('sansmaxims', { 'maxims': maxims } );
+    }else{
+        //data["Data"] = 'No data Found..';
+        //res.json(data);
+        res.status(500).render('error_template', { error: err });
+    }
+     });
+  });
+});
+
 app.get('/addmaxim', (req,res) => {
   res.render('maximpost');
 })
