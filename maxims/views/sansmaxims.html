@@ -12,6 +12,7 @@
   <body>
     <div class="container">
      <h1 class = "jumbotron text-center">Sanskrit Maxims, Meanings and Context in which they are used</h1>
+     <h3 class = "text-center">Click on any maxim to view details</h3>
      <table class="table table-striped table-hover table-responsive ">
         <thead class="thead-inverse ">
           <tr>
@@ -26,8 +27,10 @@
                 <td class ="mb-1" onclick="toggleShow({{maxim.id}})">
                     {{ maxim.maxim }}
                     <div id = "{{maxim.id}}" class = "hidden">
-                      <p><b>Meaning: </b>{{ maxim.meaning }}</p>
-                      <p><b>Context: </b>{{ maxim.context }}</p>
+                      <table>
+                      <td><b>Meaning: </b>{{ maxim.meaning }}</td>
+                      <td><b>Context: </b>{{ maxim.context }}</td>
+                      </table>
                       </div> 
                 </td>
             </tr>
