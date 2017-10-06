@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 
 //print all maxims
 app.get('/maxims', (req, res) => {    
-    console.log("Connected to db!");
+    console.log("Connected to db to read all maxims!");
     con.query('SELECT * FROM maxims', (err, rows, fields) => {
       //assert.equal(null, err); 
     //if(err) res.render('error_template', { error: err })    
@@ -55,7 +55,7 @@ app.get('/maxims', (req, res) => {
 app.get('/sansmaxims', (req, res) => {
     //assert.equal(null, err); 
     //if(err) res.render('error_template', { error: err })    
-    console.log("Connected to db!");
+    console.log("Connected to db to read all sanskrit maxims!");
     con.query('SELECT * FROM maxims', (err, rows, fields) => {
       //assert.equal(null, err); 
     //if(err) res.render('error_template', { error: err })    
@@ -98,7 +98,7 @@ app.post('/searchmean', (req, res, next) => {
   if(search_txt == ''){
     res.send('Please enter a text in search box');
    }
-    console.log('Connected for search');
+    console.log('Connected for searching meaning');
     con.query("SELECT * FROM maxims where meaning LIKE '%" + search_txt + "%'", (err, rows, fields) => {
     //if(err) res.render('error_template', { error: err })
     //assert.equal(null, err);
@@ -117,7 +117,7 @@ app.post('/searchsans', (req, res, next) => {
   if(search_txt == ''){
     res.send('Please enter a text in search box');
    }
-    console.log('Connected for search');
+    console.log('Connected for searching maxim');
     con.query("SELECT * FROM maxims where maxim LIKE '%" + search_txt + "%'", (err, rows, fields) => {
     //if(err) res.render('error_template', { error: err })
     //assert.equal(null, err);
@@ -132,6 +132,25 @@ app.post('/searchsans', (req, res, next) => {
     });
   });
 
+  app.post('/searchcontext', (req, res, next) => {
+    let search_txt = req.body.searchtext;
+    if(search_txt == ''){
+      res.send('Please enter a text in search box');
+     }
+      console.log('Connected for searching context');
+      con.query("SELECT * FROM maxims where context LIKE '%" + search_txt + "%'", (err, rows, fields) => {
+      //if(err) res.render('error_template', { error: err })
+      //assert.equal(null, err);
+      if(rows.length != 0){
+        let result = JSON.parse(JSON.stringify(rows));
+        res.render('sansmaxims', { 'maxims': result } );
+    }else{
+      res.render('error_template', {error: 'No result'});
+        res.status(500);
+        
+    }
+      });
+    });
   /*
   function handleDisconnect(connection) {
     connection.on('error', function(err) {
