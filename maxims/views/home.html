@@ -20,12 +20,12 @@
                 <a href = '/maxims' class = "btn btn-info"><b>Display all Sanskrit Maxims with explanation</b></a>
               </div>
               
-      <form>
+      <form action = '/search' method = 'POST'>
         <div class="row justify-content-md-center">
 
-          <div class="col col-md-6">
+          <div class="col col-md-8">
           <label for="searchtext" class="sr-only">Enter text to search</label>
-          <input type="text" class="form-control" id="searchtext" placeholder="Search Maxim">
+          <input type="text" class="form-control" name = "searchtext" id="searchtext" value = "" placeholder="Search Maxim">
           </div>
 
           <div class="col col-md-1">
