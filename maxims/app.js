@@ -106,9 +106,8 @@ app.post('/searchmean', (req, res, next) => {
       let result = JSON.parse(JSON.stringify(rows));
       res.render('maxims', { 'maxims': result } );
   }else{
-      //data["Data"] = 'No data Found..';
-      //res.json(data);
-      res.status(500).render('error_template', { error: err });
+    res.render('error_template', {error: 'No result'});
+    res.status(500);
   }
     });
   });
@@ -126,9 +125,9 @@ app.post('/searchsans', (req, res, next) => {
       let result = JSON.parse(JSON.stringify(rows));
       res.render('sansmaxims', { 'maxims': result } );
   }else{
-      //data["Data"] = 'No data Found..';
-      //res.json(data);
-      res.status(500).render('error_template', { error: err });
+    res.render('error_template', {error: 'No result'});
+      res.status(500);
+      
   }
     });
   });
