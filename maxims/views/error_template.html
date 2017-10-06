@@ -1,1 +1,27 @@
-<h1>Error: {{error}}</h1>
+<!doctype HTML>
+<html>
+  <head>
+    <title>Maxims</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class = "container">
+    <h1 class = "jumbotron text-center">Sanskrit Maxims, Meanings and Context in which they are used</h1>
+    <nav class="navbar navbar-light bg-white">
+    <ul class = "nav nav-pills">
+      <li class = "nav-item"><a class = "nav-link" href = "/">Home</a></li>
+      <li class = "nav-item"><a class = "nav-link active" href = "#">Sanskrit Maxims</a></li>
+      <li class = "nav-item"><a class = "nav-link" href = "/maxims">Maxims with meanings</a></li>
+    </ul>
+    <!--
+    <form class="form-inline my-2 my-lg-0" action = '/searchsans' method = 'POST'>
+      <input class="form-control mr-sm-2" type="text" placeholder="Enter Sanskrit phrase" aria-label="Search">
+      <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value = "Search!" />
+    </form>
+  -->
+  </nav>
+<p class = "text-center display-4">{{error}}</p>
+<p class = "text-center display-4">Use the navigation links to go back to the application.</p>
+</div>
+</body>
+</html>
