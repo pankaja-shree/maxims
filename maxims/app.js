@@ -36,10 +36,7 @@ app.get('/', (req, res) => {
 })
 
 //print all maxims
-app.get('/maxims', (req, res) => {
-  con.connect( (err) => {
-    //assert.equal(null, err); 
-    //if(err) res.render('error_template', { error: err })    
+app.get('/maxims', (req, res) => {    
     console.log("Connected to db!");
     con.query('SELECT * FROM maxims', (err, rows, fields) => {
       //assert.equal(null, err); 
@@ -54,11 +51,8 @@ app.get('/maxims', (req, res) => {
     }
      });
   });
-});
-
 //print all maxims in sanskrit only
 app.get('/sansmaxims', (req, res) => {
-  con.connect( (err) => {
     //assert.equal(null, err); 
     //if(err) res.render('error_template', { error: err })    
     console.log("Connected to db!");
@@ -74,7 +68,6 @@ app.get('/sansmaxims', (req, res) => {
         res.status(500).render('error_template', { error: err });
     }
      });
-  });
 });
 
 app.get('/addmaxim', (req,res) => {
@@ -90,8 +83,6 @@ app.post('/addmaxim', (req, res, next) => {
       next('Please fill all the fields');
   }
 
-  con.connect( (err) => {
-    //if(err) res.render('error_template', { error: err })
     console.log('Connected for insert');
     con.query("INSERT INTO maxims (maxim, meaning, context) VALUES ('" + maxim + "', '" + meaning + "', '" + context + "')", (err, result) => {
     //if(err) res.render('error_template', { error: err })
@@ -101,15 +92,12 @@ app.post('/addmaxim', (req, res, next) => {
       res.render('thankpage')
     });
   });
-});
 
 app.post('/searchmean', (req, res, next) => {
   let search_txt = req.body.searchtext;
   if(search_txt == ''){
     res.send('Please enter a text in search box');
    }
-  con.connect( (err) => {
-    if(err) res.render('error_template', { error: err })
     console.log('Connected for search');
     con.query("SELECT * FROM maxims where meaning LIKE '%" + search_txt + "%'", (err, rows, fields) => {
     //if(err) res.render('error_template', { error: err })
@@ -124,15 +112,12 @@ app.post('/searchmean', (req, res, next) => {
   }
     });
   });
-})
 
 app.post('/searchsans', (req, res, next) => {
   let search_txt = req.body.searchtext;
   if(search_txt == ''){
     res.send('Please enter a text in search box');
    }
-  con.connect( (err) => {
-    if(err) res.render('error_template', { error: err })
     console.log('Connected for search');
     con.query("SELECT * FROM maxims where maxim LIKE '%" + search_txt + "%'", (err, rows, fields) => {
     //if(err) res.render('error_template', { error: err })
@@ -147,7 +132,6 @@ app.post('/searchsans', (req, res, next) => {
   }
     });
   });
-})
 
 
 //app.use(errorHandler);
