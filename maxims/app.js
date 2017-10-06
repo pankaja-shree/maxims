@@ -103,7 +103,7 @@ app.post('/addmaxim', (req, res, next) => {
   });
 });
 
-app.post('/search', (req, res, next) => {
+app.post('/searchmean', (req, res, next) => {
   let search_txt = req.body.searchtext;
   if(search_txt == ''){
     res.send('Please enter a text in search box');
@@ -125,6 +125,30 @@ app.post('/search', (req, res, next) => {
     });
   });
 })
+
+app.post('/searchsans', (req, res, next) => {
+  let search_txt = req.body.searchtext;
+  if(search_txt == ''){
+    res.send('Please enter a text in search box');
+   }
+  con.connect( (err) => {
+    if(err) res.render('error_template', { error: err })
+    console.log('Connected for search');
+    con.query("SELECT * FROM maxims where maxim LIKE '%" + search_txt + "%'", (err, rows, fields) => {
+    //if(err) res.render('error_template', { error: err })
+    //assert.equal(null, err);
+    if(rows.length != 0){
+      let result = JSON.parse(JSON.stringify(rows));
+      res.render('sansmaxims', { 'maxims': result } );
+  }else{
+      //data["Data"] = 'No data Found..';
+      //res.json(data);
+      res.status(500).render('error_template', { error: err });
+  }
+    });
+  });
+})
+
 
 //app.use(errorHandler);
 
