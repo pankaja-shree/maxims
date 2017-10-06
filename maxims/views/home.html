@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container d-flex flex-column justify-content-around align-items-center">
+    <div class="container d-flex flex-column justify-content-between align-items-center">
      <h1 class = "jumbotron text-center">Sanskrit Maxims, Meanings and Context in which they are used</h1>
 
      <div class="form-group">
@@ -20,12 +20,27 @@
                 <a href = '/maxims' class = "btn btn-info"><b>Display all Sanskrit Maxims with explanation</b></a>
               </div>
               
-      <form action = '/search' method = 'POST'>
+      <form action = '/searchmean' method = 'POST'>
         <div class="row justify-content-md-center">
 
           <div class="col col-md-10">
           <label for="searchtext" class="sr-only">Enter text to search by meanings</label>
           <input type="text" class="form-control" name = "searchtext" id="searchtext" value = "" placeholder="Search by English Meanings">
+          </div>
+
+          <div class="col col-md-1">
+          <input type="submit" value = "Search!" class="btn btn-primary">
+          </div>
+
+          </div>
+      </form>
+
+      <form action = '/searchsans' method = 'POST'>
+        <div class="row justify-content-md-center">
+
+          <div class="col col-md-10">
+          <label for="searchtext" class="sr-only">Enter text to search by maxim</label>
+          <input type="text" class="form-control" name = "searchtext" id="searchtext" value = "" placeholder="Search by Sanskrit Maxim">
           </div>
 
           <div class="col col-md-1">
